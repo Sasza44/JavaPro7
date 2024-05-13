@@ -21,6 +21,7 @@ public class TransactionFrom {
 	@ManyToOne
 	@JoinColumn(name = "fromAccountId")
 	private Account accountFrom;
+	private int accountIdTo;
 	public TransactionFrom() {
 	}
 	public TransactionFrom(double sum, ExchangeRate currency) {
@@ -34,11 +35,13 @@ public class TransactionFrom {
 	public void setCurrency(ExchangeRate currency) {this.currency = currency;}
 	public LocalDateTime getDateTime() {return dateTime;}
 	public void setDateTime(LocalDateTime dateTime) {this.dateTime = dateTime;}
+	public int getAccountIdTo() {return accountIdTo;}
+	public void setAccountIdTo(int accountIdTo) {this.accountIdTo = accountIdTo;}
 	public Account getAccountFrom() {return accountFrom;}
 	public void setAccountFrom(Account accountFrom) {this.accountFrom = accountFrom;}
 	@Override
 	public String toString() {
 		return "TransactionFrom [id=" + id + ", sum=" + sum + ", currency=" + currency.getCurrency() + ", dateTime=" + dateTime
-				+ ", accountFrom=" + accountFrom.getId() + "]";
+				+ ", accountFrom=" + accountFrom.getId() + ", accountTo=" + accountIdTo + "]";
 	}
 }

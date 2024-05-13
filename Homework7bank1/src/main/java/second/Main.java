@@ -211,8 +211,10 @@ public class Main {
 				em.merge(accountTo); // оновлюємо дані рахунку в базі
 				TransactionFrom transactionFrom = new TransactionFrom(sum, currency); // створюємо новий об'єкт транзакції, який описує зміну рахунку
 				transactionFrom.setAccountFrom(accountFrom); // додаємо в транзакцію рахунок, з якого знімаємо гроші
+				transactionFrom.setAccountIdTo(accountToId); // додаємо в транзакцію id рахунку, на який перекидаємо гроші
 				TransactionTo transactionTo = new TransactionTo(sum, currency);
 				transactionTo.setAccountTo(accountTo); // додаємо в транзакцію рахунок, на поповнюємо суму
+				transactionTo.setAccountIdFrom(accountFromId); // додаємо в транзакцію id рахунку, з якого зняли цю суму
 				em.persist(transactionFrom); // зберігаємо транзакцію
 				em.persist(transactionTo);
 			}
